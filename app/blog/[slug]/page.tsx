@@ -1,19 +1,33 @@
 import { notFound } from 'next/navigation'
 import { posts } from 'lib/posts'
+import type { Metadata } from 'next'
 
-// Define the props type using an interface or type alias.
-// This is the standard and most robust way to type page props in the App Router.
-type PostPageProps = {
-  params: {
-    slug: string
-  }
+// Definindo o tipo para os parâmetros que a página recebe
+type Props = {
+  params: { slug: string }
 }
 
-export default function PostPage({ params }: PostPageProps) {
+// Função para gerar metadados dinâmicos (título da página, etc.)
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = posts.find((p) => p.slug === params.slug)
 
   if (!post) {
-    // This will render the not-found.tsx file or a default 404 page.
+    return {
+      title: 'Post Não Encontrado',
+    }
+  }
+
+  return {
+    title: post.title,
+    description: post.excerpt,
+  }
+}
+
+// O componente da página, agora usando o tipo 'Props' correto
+export default function PostPage({ params }: Props) {
+  const post = posts.find((p) => p.slug === params.slug)
+
+  if (!post) {
     notFound()
   }
 
@@ -28,8 +42,7 @@ export default function PostPage({ params }: PostPageProps) {
   )
 }
 
-// Optional: Function to generate static paths for your posts at build time.
-// This improves performance and SEO.
+// Função para gerar os caminhos estáticos no momento do build
 export async function generateStaticParams() {
   return posts.map((post) => ({
     slug: post.slug,
