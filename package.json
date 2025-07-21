@@ -45,6 +45,7 @@
     "@semantic-release/npm": "^12.0.2",
     "@semantic-release/release-notes-generator": "^13.0.0",
     "@t3-oss/env-nextjs": "^0.10.1",
+    "@vercel/analytics": "^1.5.0",
     "@vercel/otel": "^1.13.0",
     "aos": "^2.3.4",
     "chart.js": "^4.5.0",
