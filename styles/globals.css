@@ -1,0 +1,16 @@
+@import 'tailwindcss';
+@import 'aos/dist/aos.css';
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+
+  body {
+    @apply bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-200;
+  }
+}
