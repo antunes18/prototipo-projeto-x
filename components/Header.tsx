@@ -1,36 +1,49 @@
+// components/Header.tsx
 import Link from 'next/link'
+import { Menu } from 'lucide-react'
 
 export function Header() {
+  const navLinks = (
+    <>
+      <li>
+        <Link href="/">Home</Link>
+      </li>
+      <li>
+        <Link href="/imoveis">Buscar Imóveis</Link>
+      </li>
+      <li>
+        <Link href="/blog">Blog</Link>
+      </li>
+    </>
+  )
+
   return (
-    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md dark:bg-gray-900/80">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
-          <div className="flex-shrink-0">
-            <Link href="/" className="text-2xl font-bold text-blue-600 dark:text-blue-500">
-              ImóvelX
-            </Link>
-          </div>
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
-              <Link
-                href="/"
-                className="rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
-              >
-                Home
-              </Link>
-              <Link
-                href="/imoveis"
-                className="rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
-              >
-                Buscar Imóveis
-              </Link>
-              <Link
-                href="/blog"
-                className="rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
-              >
-                Blog
-              </Link>
-            </div>
+    <header className="navbar sticky top-0 z-50 bg-base-100/80 backdrop-blur-md shadow-sm">
+      <div className="container mx-auto max-w-7xl">
+        <div className="navbar-start">
+
+          <Link href="/" className="btn btn-ghost text-2xl font-bold text-primary">
+            MR Imóveis by Jean Dias
+          </Link>
+        </div>
+        <div className="navbar-center hidden lg:flex">
+          <ul className="menu menu-horizontal px-1">{navLinks}</ul>
+        </div>
+        <div className="navbar-end">
+          <a className="btn btn-primary hidden sm:inline-flex">Anunciar Imóvel</a>
+          <div className="dropdown dropdown-end">
+            <label tabIndex={0} className="btn btn-ghost lg:hidden">
+              <Menu />
+            </label>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              {navLinks}
+              <li className="sm:hidden">
+                <a className="btn btn-primary btn-sm mt-2">Anunciar</a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

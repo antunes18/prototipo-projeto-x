@@ -11,9 +11,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" data-theme="light"> {/* Adicione um tema padrão da DaisyUI aqui */}
+      <head>
+        {/* Adicione a propriedade precedence="default" aqui */}
+        <link
+          href="https://cdn.jsdelivr.net/npm/daisyui@4.12.2/dist/full.min.css"
+          rel="stylesheet"
+          type="text/css"
+          precedence="default"
+        />
+      </head>
       <body className="flex min-h-screen flex-col">
-        <Analytics />
         <Header />
         <main className="flex-grow">{children}</main>
         <Footer />

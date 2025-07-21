@@ -12,7 +12,7 @@ import 'swiper/css/pagination'
 
 export function FeaturedProperties() {
   return (
-    <section className="py-20 sm:py-24">
+    <section id="featured-properties" className="py-20 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <h2 className="text-center text-3xl font-bold tracking-tight">Imóveis em Destaque</h2>
         <div className="mt-12">
